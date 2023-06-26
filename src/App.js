@@ -1,42 +1,20 @@
-import './App.css';
 
-
-import {Button} from "@mui/material"
 import {ThemeProvider, createTheme} from "@mui/material/styles"
-import rtlPlugin from "stylis-plugin-rtl"
-import {CacheProvider} from "@emotion/react"
-import {HelmetProvider, Helmet} from "react-helmet-async"
+import {Box, Button, Fab, Fade} from "@mui/material"
 import createCache from "@emotion/cache"
 import {prefixer} from "stylis"
-
-const theme = createTheme({
-    direction: "rtl",
-    typography:{
-        fontFamily: "vazir, roboto"
-    }
-})
-
-const cacheRTL = createCache({
-    key: "muirtl",
-    stylisPlugins: [prefixer, rtlPlugin]
-})
+import Header from "./components/ui/header";
+import MainLayout from "./components/layouts/MainLayout";
+import rtlPlugin from "stylis-plugin-rtl";
 function App() {
-  return (
-      <CacheProvider value={cacheRTL} >
-          <ThemeProvider theme={theme}>
-              <HelmetProvider>
-                  <Helmet>
-                      <title>وب سایت شخصی سجی</title>
-                  </Helmet>
-                  <div className="App">
-                      <Button variant="contained">Click here</Button>
-                  </div>
-              </HelmetProvider>
-          </ThemeProvider>
-      </CacheProvider>
-
-
-  );
+    const cacheRTL = createCache({
+        key: "muirtl",
+        stylisPlugins: [prefixer, rtlPlugin]
+    })
+    return (
+        <MainLayout cacheRTL={cacheRTL}>
+        </MainLayout>
+    );
 }
 
 export default App;
