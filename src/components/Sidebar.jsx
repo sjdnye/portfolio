@@ -1,5 +1,16 @@
 import Grid from "@mui/material/Unstable_Grid2";
-import {Typography, Avatar, Divider, Box, Hidden, Tabs, Tab} from "@mui/material";
+import {
+    Typography,
+    Avatar,
+    Divider,
+    Box,
+    Hidden,
+    Tabs,
+    Tab,
+    Drawer,
+    SwipeableDrawer,
+    Fab
+} from "@mui/material";
 import {
     HomeRounded,
     FaceRounded,
@@ -8,115 +19,63 @@ import {
     MessageRounded,
     ConnectWithoutContactRounded,
     FavoriteRounded,
-    CopyrightRounded
+    CopyrightRounded,
+    MenuRounded
 } from "@mui/icons-material"
-import {grey} from "@mui/material/colors"
+import {grey, red, blue, lightBlue} from "@mui/material/colors"
+import {useState} from 'react'
+import DrawerContent from "./ui/DrawerContent";
 
 const Sidebar = ({value, handleChange}) => {
-
-    const tabProps = (index) => {
-        return {
-            id: `sidebar-tab-${index}`,
-            "aria-controls": `tabpanel-${index}`
-        }
-    }
+    const [drawerOpen, setDrawerOpen] = useState(false)
     return (
         <Grid xs={0} sm={0} md={2} lg={2} xl={2}
-              sx={{backgroundColor: grey[900]}}>
+              sx={{backgroundColor: grey[900]}}
+        >
             <Box
                 sx={{
-                    justifyContent: "center",
-                    textAlign: "center",
-                    mt: 2
-                }}>
-                <Hidden mdDown>
-                    <Avatar
-                        src="../assets/logo.svg"
-                        variant="rounded"
-                        sx={{height: 200, width: 200, margin: "0 auto"}}
-                    >
-                        SB
-                    </Avatar>
-                </Hidden>
-                <Typography variant="h6" color="whitesmoke" sx={{mt: 1}}>Saji</Typography>
-                <Typography variant="caption" color="whitesmoke">Programmer</Typography>
-                <Divider variant="middle" color={grey[600]} sx={{mt: 2}}/>
-
-                <Tabs
-                    orientation="vertical"
-                    variant="scrollable"
-                    scrollButton="auto"
-                    alloScrollButtonMobile
-                    value={value}
-                    onChange={handleChange}
+                    display: {
+                        xs: "block",
+                        sm: "block",
+                        md: "none",
+                        lg: "none",
+                        xl: "none"
+                    }
+                }
+                }
+            >
+                < Fab
+                    aria-label={"Sidebar"}
+                    size={"small"}
+                    sx={{mx: 2, backgroundColor: grey[700], color: "white", mt: 1}}
+                    onClick={() => setDrawerOpen(true)}
                 >
-                    <Tab
-                        label="Home"
-                        icon={<HomeRounded/>}
-                        iconPosition="start"
-                        sx={{color: "whitesmoke"}}
-                        {...tabProps(0)}
-                    />
-                    <Tab
-                        label="About"
-                        icon={<FaceRounded/>}
-                        iconPosition="start"
-                        sx={{color: "whitesmoke"}}
-                        {...tabProps(1)}
-
-                    />
-                    <Tab
-                        label="Resume"
-                        icon={<TextSnippetRounded/>}
-                        iconPosition="start"
-                        sx={{color: "whitesmoke"}}
-                        {...tabProps(2)}
-                    />
-                    <Tab
-                        label="Works"
-                        icon={<TerminalRounded/>}
-                        iconPosition="start"
-                        sx={{color: "whitesmoke"}}
-                        {...tabProps(3)}
-                    />
-                    <Tab
-                        label="Opinions"
-                        icon={<MessageRounded/>}
-                        iconPosition="start"
-                        sx={{color: "whitesmoke"}}
-                        {...tabProps(4)}
-                    />
-                    <Tab
-                        label="Contact me"
-                        icon={<ConnectWithoutContactRounded/>}
-                        iconPosition="start"
-                        sx={{color: "whitesmoke"}}
-                        {...tabProps(5)}
-                    />
-                </Tabs>
-                <Divider variant="middle" color={grey[600]} sx={{mt: 2}}/>
-
-                <Box
-                    sx={{
-                        flexGrow: 1,
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "end",
-                        alignItems: "center",
-                        height: 100
-                    }}
-                >
-                    <Typography variant="subtitle2" color="whitesmoke">
-                        Designed by {" "}
-                        <FavoriteRounded sx={{verticalAlign: "middle", color: "tomato", height: 20}}/>
-                    </Typography>
-                    <Typography variant="caption" color="whitesmoke" sx={{mt: 2}}>
-                        Copyright 2023 {" "}
-                        <CopyrightRounded sx={{verticalAlign: "middle", height: 16}}/>
-                    </Typography>
-
-                </Box>
+                    <MenuRounded/>
+                </Fab>
             </Box>
+            <DrawerContent value={value} handleChange={handleChange} />
+            <Drawer
+                open={drawerOpen}
+                variant="temporary"
+                onClose={() => setDrawerOpen(false)}
+                sx={{
+                    "& .MuiDrawer-paper": {
+                        // width: 300
+                        height:1
+                    },
+                    display: {
+                        xs: "block",
+                        sm: "block",
+                        md: "none",
+                        lg: "none",
+                        xl: "none"
+                    },
+                    backgroundColor: grey[900]
+                }
+                }
+            >
+                <DrawerContent value={value} handleChange={handleChange} setDrawerOpen={setDrawerOpen}/>
+            </Drawer>
         </Grid>
     )
 }
