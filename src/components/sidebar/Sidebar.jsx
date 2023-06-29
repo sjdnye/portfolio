@@ -4,8 +4,6 @@ import { DrawerActionButton, SidebarDrawer } from "../drawer";
 const Sidebar = () => {
     return (
         <>
-            <DrawerActionButton />
-
             <SidebarContent />
 
             <SidebarDrawer />

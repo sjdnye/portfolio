@@ -1,29 +1,15 @@
-import { useContext } from "react";
-
-import { Tabs, Tab } from "@mui/material";
-import {
-    HomeRounded,
-    FaceRounded,
-    TextSnippetRounded,
-    TerminalRounded,
-    MessageRounded,
-    ConnectWithoutContactRounded,
-} from "@mui/icons-material";
-import { grey } from "@mui/material/colors";
+import {useContext} from "react";
+import {Tabs, Tab} from "@mui/material";
+import {grey} from "@mui/material/colors";
 
 import MainContext from "../../context";
+import {tabsData} from "../data/tabsData.sidebar"
 
 const SidebarTabs = () => {
-    const { pageNumber, handlePageNumber, setDrawerOpen } =
+    const {pageNumber, handlePageNumber, setDrawerOpen} =
         useContext(MainContext);
 
-    const tabProps = (index) => {
-        return {
-            id: `sidebar-tab-${index}`,
-            "aria-controls": `tabpanel-${index}`,
-        };
-    };
-
+    const data = tabsData();
     return (
         <Tabs
             orientation="vertical"
@@ -32,85 +18,29 @@ const SidebarTabs = () => {
             alloScrollButtonMobile
             value={pageNumber}
             onChange={handlePageNumber}
+            sx={{textAlign:"start", justifyContent:"center"}}
         >
-            <Tab
-                label="Home"
-                icon={<HomeRounded/>}
-                iconPosition="start"
-                sx={{
-                    color: "whitesmoke",
-                    "&.MuiTab-root": {
-                        minHeight: 50
-                    }
-                }}
-                {...tabProps(0)}
-                onClick={() => setDrawerOpen(false)}
-            />
-            <Tab
-                label="About"
-                icon={<FaceRounded/>}
-                iconPosition="start"
-                sx={{
-                    color: "whitesmoke",
-                    "&.MuiTab-root": {
-                        minHeight: 50
-                    }
-                }}
-                {...tabProps(1)}
-                onClick={() => setDrawerOpen(false)}
-            />
-            <Tab
-                label="Resume"
-                icon={<TextSnippetRounded/>}
-                iconPosition="start"
-                sx={{
-                    color: "whitesmoke",
-                    "&.MuiTab-root": {
-                        minHeight: 50
-                    }
-                }}
-                {...tabProps(2)}
-                onClick={() => setDrawerOpen(false)}
-            />
-            <Tab
-                label="Works"
-                icon={<TerminalRounded/>}
-                iconPosition="start"
-                sx={{
-                    color: "whitesmoke",
-                    "&.MuiTab-root": {
-                        minHeight: 50
-                    }
-                }}
-                {...tabProps(3)}
-                onClick={() => setDrawerOpen(false)}
-            />
-            <Tab
-                label="Opinions"
-                icon={<MessageRounded/>}
-                iconPosition="start"
-                sx={{
-                    color: "whitesmoke",
-                    "&.MuiTab-root": {
-                        minHeight: 50
-                    }
-                }}
-                {...tabProps(4)}
-                onClick={() => setDrawerOpen(false)}
-            />
-            <Tab
-                label="Contact me"
-                icon={<ConnectWithoutContactRounded/>}
-                iconPosition="start"
-                sx={{
-                    color: "whitesmoke",
-                    "&.MuiTab-root": {
-                        minHeight: 50
-                    }
-                }}
-                {...tabProps(5)}
-                onClick={() => setDrawerOpen(false)}
-            />
+            {
+                data.map((tab, index) => (
+                        <Tab
+                            key={index}
+                            label={tab.label}
+                            icon={tab.icon}
+                            iconPosition="start"
+                            sx={{
+                                color: "whitesmoke",
+                                "&.MuiTab-root": {
+                                    minHeight: 50
+                                },
+                                textAlign:"start",
+                                justifyContent:"center"
+                            }}
+                            onClick={() => setDrawerOpen(false)}
+                            {...tab}
+                        />
+                    )
+                )
+            }
         </Tabs>
     );
 };
