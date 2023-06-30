@@ -9,7 +9,7 @@ const PagesContainer = ({ children }) => {
             md={9}
             lg={10}
             xl={10}
-            sx={{ backgroundColor: grey[900] }}
+            sx={{ backgroundColor: "whitesmoke" }}
         >
             {children}
         </Grid>

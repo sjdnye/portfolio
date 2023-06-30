@@ -11,7 +11,7 @@ import Page from "../pages/components/Page";
 import SidebarContainer from "./SidebarContainer";
 import MainContext from "../context";
 import {DrawerActionButton} from "../components/drawer";
-import {Home} from "../pages";
+import {Home, About} from "../pages";
 
 function App() {
     const [pageNumber, setPageNumber] = useState(0);
@@ -41,19 +41,7 @@ function App() {
                             <Home/>
                         </Page>
                         <Page pageNumber={pageNumber} index={1}>
-                            <Box
-                                sx={{
-                                    backgroundImage: `url(${require("../assets/bg02.jpeg")})`,
-                                    backgroundPosition: "center",
-                                    backgroundRepeat: "no-repeat",
-                                    backgroundSize: "cover",
-                                    height: "100vh"
-                                }}
-                            >
-                                <Typography variant="h5" sx={{textAlign: "center", color: "whitesmoke"}}>
-                                    صفحه اصلی
-                                </Typography>
-                            </Box>
+                            <About/>
                         </Page>
                         <Page pageNumber={pageNumber} index={2}>
                             <Box

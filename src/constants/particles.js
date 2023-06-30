@@ -1,87 +1,60 @@
-
-export const hexagon = {
+export const firefly = {
+    fpsLimit: 60,
     particles: {
-        color: {
-            value: "#FF0000",
-            animation: {
-                enable: true,
-                speed: 10,
-            },
-        },
         move: {
-            attract: {
-                enable: false,
-                distance: 100,
-                rotate: {
-                    x: 2000,
-                    y: 2000,
-                },
-            },
+            bounce: false,
             direction: "none",
             enable: true,
-            outModes: {
-                default: "destroy",
-            },
-            path: {
-                clamp: false,
-                enable: true,
-                delay: {
-                    value: 0,
-                },
-                generator: "polygonPathGenerator",
-                options: {
-                    sides: 6,
-                    turnSteps: 30,
-                    angle: 30,
-                },
-            },
+            outModes: "out",
             random: false,
-            speed: 3,
+            speed: 2,
             straight: false,
-            trail: {
-                fillColor: "#000",
-                length: 20,
-                enable: true,
+        },
+    },
+    number: { density: { enable: true, area: 800 }, value: 80 },
+    opacity: {
+        value: 0.5,
+    },
+    shape: {
+        type: "circle",
+    },
+    size: {
+        value: { min: 1, max: 5 },
+    },
+    themes: [
+        {
+            name: "light",
+            default: {
+                value: true,
+                mode: "light",
+            },
+            options: {
+                background: {
+                    color: "#fff",
+                },
+                particles: {
+                    color: {
+                        value: "#000",
+                    },
+                },
             },
         },
-        number: {
-            density: {
-                enable: true,
-                area: 800,
+        {
+            name: "dark",
+            default: {
+                value: true,
+                mode: "dark",
             },
-            value: 0,
+            options: {
+                particles: {
+                    color: {
+                        // value: "#75075E"
+                        value: "#FD4495",
+                    },
+                },
+            },
         },
-        opacity: {
-            value: 1,
-        },
-        shape: {
-            type: "circle",
-        },
-        size: {
-            value: 2,
-        },
-    },
-    background: {
-        color: "#000",
-    },
-    fullScreen: {
-        zIndex: -1,
-    },
-    emitters: {
-        direction: "none",
-        rate: {
-            quantity: 1,
-            delay: 0.25,
-        },
-        size: {
-            width: 0,
-            height: 0,
-        },
-        position: {
-            x: 50,
-            y: 50,
-        },
-    },
+    ],
 };
 
 export const links = {
@@ -105,7 +78,7 @@ export const links = {
     particles: {
         color: { value: "#FD4795" },
         line_linked: {
-            color: "#ffffff",
+            color: "#FD4795",
             distance: 150,
             enable: true,
             opacity: 0.4,
