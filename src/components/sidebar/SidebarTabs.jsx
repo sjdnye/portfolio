@@ -18,7 +18,7 @@ const SidebarTabs = () => {
             alloScrollButtonMobile
             value={pageNumber}
             onChange={handlePageNumber}
-            sx={{textAlign:"start", justifyContent:"center"}}
+            sx={{textAlign: "start", justifyContent: "center"}}
         >
             {
                 data.map((tab, index) => (
@@ -28,12 +28,12 @@ const SidebarTabs = () => {
                             icon={tab.icon}
                             iconPosition="start"
                             sx={{
-                                color: "whitesmoke",
+                                color: "primary",
                                 "&.MuiTab-root": {
                                     minHeight: 50
                                 },
-                                textAlign:"start",
-                                justifyContent:"center"
+                                textAlign: "start",
+                                justifyContent: "center"
                             }}
                             onClick={() => setDrawerOpen(false)}
                             {...tab}

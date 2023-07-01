@@ -13,8 +13,10 @@ import {devEdu} from "../constants/details"
 import {grey} from "@mui/material/colors";
 import {CodeRounded, SettingsEthernetRounded, HomeRepairServiceRounded, SchoolRounded} from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
+import {useTheme} from "@mui/material/styles";
 
 const Resume = ({helmetTitle}) => {
+    const theme = useTheme();
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -33,13 +35,13 @@ const Resume = ({helmetTitle}) => {
             <Box
                 sx={{
                     height: "100vh",
-                    backgroundColor: grey[900],
+                    backgroundColor: theme.palette.mode === "dark" ? grey[900] : "white",
                 }}
             >
                 <Card
                     sx={{
                         height: "100vh",
-                        backgroundColor: grey[900],
+                        backgroundColor: theme.palette.mode === "dark" ? grey[900] : "white",
                         overflowY: "scroll"
                     }}
                 >
@@ -140,19 +142,19 @@ const Resume = ({helmetTitle}) => {
                                                     </Typography>
                                                     <Typography
                                                         variant="body1"
-                                                        color="black"
+                                                        color="text.primary"
                                                     >
                                                         {item.cert}
                                                     </Typography>
                                                     <Typography
                                                         variant="body2"
-                                                        color="black"
+                                                        color="tex.primary"
                                                     >
                                                         {item.major}
                                                     </Typography>
                                                     <Typography
                                                         variant="body2"
-                                                        color="black"
+                                                        color="text.primary"
                                                     >
                                                         {item.place}
                                                     </Typography>

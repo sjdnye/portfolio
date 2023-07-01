@@ -6,6 +6,7 @@ import {RandomReveal} from "react-random-reveal";
 import avatar from "../../assets/logo.svg"
 import {alphabetPersian} from "../../constants/alphabetPersian"
 import {socialMediaInfo} from "../../constants/socialMediaInfo"
+import ThemeActionButton from "../ThemeActionButton";
 
 
 const SidebarHeader = () => {
@@ -13,6 +14,7 @@ const SidebarHeader = () => {
     const [start, setStart] = useState(false)
     return (
         <>
+            <ThemeActionButton/>
             <Avatar
                 src={avatar}
                 variant="rounded"
@@ -40,7 +42,10 @@ const SidebarHeader = () => {
                     SB
                 </Box>
             </Avatar>
-            <Typography variant="h6" color="whitesmoke" sx={{mt: 1}}>
+            <Typography
+                variant="h6"
+                color="text.primary"
+                sx={{mt: 1}}>
                 <RandomReveal
                     isPlaying={true}
                     characters={"Saji"}
@@ -74,8 +79,8 @@ const SidebarHeader = () => {
                 }}
             >
                 {
-                    socialMediaInfo.map(social =>(
-                        <IconButton aria-label = {social["aria-label"]}>
+                    socialMediaInfo.map(social => (
+                        <IconButton aria-label={social["aria-label"]}>
                             <a href={social.link} target={"_blank"} rel={"noopener noreferrer"}>
                                 {social.icon}
                             </a>

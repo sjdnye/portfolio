@@ -9,12 +9,12 @@ import Particles from "react-particles"
 import {loadFull} from "tsparticles"
 import TextTransition, {presets} from "react-text-transition";
 import {Helmet} from "react-helmet-async";
-
+import {useTheme} from "@mui/material/styles";
 
 const Home = ({helmetTitle}) => {
+    const theme = useTheme();
     const nameEl = useRef(null);
     const infoEl = useRef(null);
-
     const [index, setIndex] = useState(0)
 
     const strings = [
@@ -113,7 +113,6 @@ const Home = ({helmetTitle}) => {
                 </TextTransition>
             </Box>
         </>
-
     )
 }
 

@@ -24,7 +24,7 @@ const Skill = ({icon, color, name, value}) => {
                     }
                     color={color}
                     label={name}
-                    sx={{color: "black", p: 2.5}}
+                    sx={{color: "text.primary", p: 2.5}}
                 />
             </Divider>
             <Box
@@ -34,7 +34,7 @@ const Skill = ({icon, color, name, value}) => {
                 }}
             >
                 <Box sx={{minWidth: 35, mr:1}}>
-                    <Typography variant={"body2"} color={"whitesmoke"}>
+                    <Typography variant={"body2"} color={"text.primary"}>
                         <Badge
                             variant={"standard"}
                             color={color}

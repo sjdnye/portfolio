@@ -1,7 +1,9 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import {grey} from "@mui/material/colors"
+import {useTheme} from "@mui/material/styles";
 
-const PagesContainer = ({ children }) => {
+const PagesContainer = ({children}) => {
+    const theme = useTheme();
     return (
         <Grid
             xs={12}
@@ -9,7 +11,7 @@ const PagesContainer = ({ children }) => {
             md={9}
             lg={10}
             xl={10}
-            sx={{ backgroundColor: "whitesmoke" }}
+            sx={{backgroundColor: theme.palette.mode === "dark" ? grey[900] : "white"}}
         >
             {children}
         </Grid>

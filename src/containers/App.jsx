@@ -12,14 +12,22 @@ import Page from "../pages/components/Page";
 import SidebarContainer from "./SidebarContainer";
 import MainContext from "../context";
 import {DrawerActionButton} from "../components/drawer";
-import {Home, About, Resume} from "../pages";
+import {Home, About, Resume, MyProjects, Comment} from "../pages";
 
 function App() {
     const [pageNumber, setPageNumber] = useState(0);
     const [drawerOpen, setDrawerOpen] = useState(false);
+    let [mode, setMode] = useState()
 
     const theme = useTheme();
     const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+    const preferesDarkMode = useMediaQuery('(prefers-color-schema: dark');
+
+    useEffect(() => {
+        setMode(preferesDarkMode ? "dark" : "light");
+
+    }, [])
+
 
     useEffect(() => {
         if (isMdUp) {
@@ -32,11 +40,15 @@ function App() {
         setPageNumber(newPage);
     };
 
+    const handleThemeMode = () => {
+        setMode(prevMode => prevMode === "dark" ? "light" : "dark");
+    }
+
     return (
         <MainContext.Provider
-            value={{pageNumber, handlePageNumber, drawerOpen, setDrawerOpen}}
+            value={{pageNumber, handlePageNumber, handleThemeMode, drawerOpen, setDrawerOpen}}
         >
-            <MainLayout>
+            <MainLayout mode={mode}>
                 <SidebarContainer>
                     <Sidebar/>
                 </SidebarContainer>
@@ -57,14 +69,10 @@ function App() {
                             <Resume helmetTitle={"صفحه رزومه"}/>
                         </Page>
                         <Page pageNumber={pageNumber} index={3}>
-                            <Typography variant="h5" sx={{textAlign: "center"}}>
-                                نمونه کارها
-                            </Typography>
+                            <MyProjects helmetTitle={"دوره های من"}/>
                         </Page>
                         <Page pageNumber={pageNumber} index={4}>
-                            <Typography variant="h5" sx={{textAlign: "center"}}>
-                                نظرات دانشجویان
-                            </Typography>
+                            <Comment helmetTitle={"صفحه نظرات"}/>
                         </Page>
                         <Page pageNumber={pageNumber} index={5}>
                             <Typography variant="h5" sx={{textAlign: "center"}}>

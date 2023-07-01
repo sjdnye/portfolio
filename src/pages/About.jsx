@@ -15,12 +15,13 @@ import {
 } from "@mui/icons-material"
 import logo from "../assets/logo.svg"
 import DevInfo from "./components/DevInfo";
-
+import {useTheme} from "@mui/material/styles";
 import {Helmet} from "react-helmet-async";
 import CountUp from "react-countup"
 
 const About = ({helmetTitle}) => {
     const {htmlSkill, cssSkill, jsSkill, reactSkill, nodeSkill, gitSkill, kotlinSkill} = devSkills;
+    const theme = useTheme();
 
     const [javascript, setJavascript] = useState(0);
     const [html, setHtml] = useState(0);
@@ -82,13 +83,13 @@ const About = ({helmetTitle}) => {
             <Box
                 sx={{
                     height: "100vh",
-                    backgroundColor: grey[900],
+                    backgroundColor: theme.palette.mode === "dark" ? grey[900] : "white",
                 }}
             >
                 <Card
                     sx={{
                         height: "100vh",
-                        backgroundColor: grey[900],
+                        backgroundColor: theme.palette.mode === "dark" ? grey[900]: "white",
                         overflowY: "scroll"
                     }}
                 >
