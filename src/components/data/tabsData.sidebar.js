@@ -25,11 +25,11 @@ const tabProps = (index) => {
         icon: <FaceRounded/>,
         ...tabProps(1)
     },
-    // {
-    //     label: "رزومه من",
-    //     icon: <TextSnippetRounded/>,
-    //     ...tabProps(2)
-    // },
+    {
+        label: "رزومه من",
+        icon: <TextSnippetRounded/>,
+        ...tabProps(2)
+    },
     {
         label: "نمونه کارها",
         icon: <TerminalRounded/>,

@@ -1,10 +1,12 @@
 import {useState} from "react"
 import {Avatar, Box, Typography, IconButton} from "@mui/material";
+import {GitHub, Telegram, Instagram} from "@mui/icons-material"
 import {RandomReveal} from "react-random-reveal";
 
 import avatar from "../../assets/logo.svg"
 import {alphabetPersian} from "../../constants/alphabetPersian"
-import {GitHub, Telegram, Instagram} from "@mui/icons-material"
+import {socialMediaInfo} from "../../constants/socialMediaInfo"
+
 
 const SidebarHeader = () => {
 
@@ -71,21 +73,30 @@ const SidebarHeader = () => {
                     textAlign: "center"
                 }}
             >
-                <IconButton aria-label={"GitHub"}>
-                    <a href={"https://github.com/sjdnye"} target={"_blank"} rel={"noopener noreferrer"}>
-                        <GitHub sx={{color: "gray"}}/>
-                    </a>
-                </IconButton>
-                <IconButton aria-label={"Instagram"}>
-                    <a href={"https://instagram.com/_sjdnye_"} target={"_blank"} rel={"noopener noreferrer"}>
-                        <Instagram sx={{color: "gray"}}/>
-                    </a>
-                </IconButton>
-                <IconButton aria-label={"Telegram"}>
-                    <a href={"https://telegram.com/sjdnye"} target={"_blank"} rel={"noopener noreferrer"}>
-                        <Telegram sx={{color: "gray"}}/>
-                    </a>
-                </IconButton>
+                {
+                    socialMediaInfo.map(social =>(
+                        <IconButton aria-label = {social["aria-label"]}>
+                            <a href={social.link} target={"_blank"} rel={"noopener noreferrer"}>
+                                {social.icon}
+                            </a>
+                        </IconButton>
+                    ))
+                }
+                {/*<IconButton aria-label={"GitHub"}>*/}
+                {/*    <a href={"https://github.com/sjdnye"} target={"_blank"} rel={"noopener noreferrer"}>*/}
+                {/*        <GitHub sx={{color: "gray"}}/>*/}
+                {/*    </a>*/}
+                {/*</IconButton>*/}
+                {/*<IconButton aria-label={"Instagram"}>*/}
+                {/*    <a href={"https://instagram.com/_sjdnye_"} target={"_blank"} rel={"noopener noreferrer"}>*/}
+                {/*        <Instagram sx={{color: "gray"}}/>*/}
+                {/*    </a>*/}
+                {/*</IconButton>*/}
+                {/*<IconButton aria-label={"Telegram"}>*/}
+                {/*    <a href={"https://telegram.com/sjdnye"} target={"_blank"} rel={"noopener noreferrer"}>*/}
+                {/*        <Telegram sx={{color: "gray"}}/>*/}
+                {/*    </a>*/}
+                {/*</IconButton>*/}
             </Box>
         </>
     );

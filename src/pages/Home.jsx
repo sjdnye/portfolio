@@ -11,7 +11,7 @@ import TextTransition, {presets} from "react-text-transition";
 import {Helmet} from "react-helmet-async";
 
 
-const Home = () => {
+const Home = ({helmetTitle}) => {
     const nameEl = useRef(null);
     const infoEl = useRef(null);
 
@@ -65,7 +65,7 @@ const Home = () => {
     return (
         <>
             <Helmet>
-                <title>وب سایت شخصی سجی</title>
+                <title>{helmetTitle}</title>
             </Helmet>
             <Box
                 sx={{
