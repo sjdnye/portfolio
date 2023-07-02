@@ -1,24 +1,16 @@
-import {useState, useEffect} from "react"
 import {Helmet} from "react-helmet-async";
-import {Box, Typography, Card, CardContent, Divider, Chip, Slide, Avatar} from "@mui/material"
+import {Box, Card, CardContent} from "@mui/material"
 import {grey} from "@mui/material/colors";
 import Slider from "react-slick"
-import {CodeRounded, SettingsEthernetRounded, ForumRounded} from "@mui/icons-material";
-import {useTheme} from "@mui/material/styles";
+import {ForumRounded} from "@mui/icons-material";
 import {userComments} from "../constants/details"
+import CustomDivider from "../components/common/CustomDivider";
+import UserCommentBox from "../components/pages/UserCommentBox";
+import {useTheme} from "@mui/material/styles";
 
 
 const Comment = ({helmetTitle}) => {
-    const [loading, setLoading] = useState(false);
     const theme = useTheme();
-    useEffect(() => {
-        setLoading(true)
-
-        return () => {
-            setLoading(false)
-        }
-    }, [])
-
     const options = {
         dots: true,
         arrows: false,
@@ -50,38 +42,14 @@ const Comment = ({helmetTitle}) => {
                     }}
                 >
                     <CardContent>
-                        <Slide
-                            direction="down"
-                            in={loading}
-                            style={{
-                                transitionDelay: loading ? "100ms" : "0ms",
-                            }}
-                        >
-                            <Divider
-                                textAlign="center"
-                                sx={{
-                                    "&::before, &::after": {
-                                        borderColor: "success.main",
-                                    },
-                                    mb: 3,
-                                }}
-                            >
-                                <Chip
-                                    icon={<ForumRounded/>}
-                                    color="success"
-                                    label={
-                                        <Typography
-                                            variant="body1"
-                                            color="text.primary"
-                                            sx={{textAlign: "center"}}
-                                        >
-                                            نظرات دانشجویان دوره های من
-                                        </Typography>
-                                    }
-                                    sx={{p: 3}}
-                                />
-                            </Divider>
-                        </Slide>
+                        <CustomDivider
+                            textAlign={"center"}
+                            borderColor={"success.main"}
+                            chipColor={"success"}
+                            chipIcon={<ForumRounded/>}
+                            chipTitle={" نظرات دانشجویان دوره های من"}
+                        />
+
                         <Box
                             component="div"
                             sx={{
@@ -97,48 +65,12 @@ const Comment = ({helmetTitle}) => {
                                         component="div"
                                         sx={{justifyContent: "center"}}
                                     >
-                                        <Avatar
-                                            src={user.avatar}
-                                            variant="rounded"
-                                            sx={{
-                                                height: 100,
-                                                width: 100,
-                                                margin: "0 auto",
-                                            }}
+                                        <UserCommentBox
+                                            avatar={user.avatar}
+                                            userFullname={user.fullname}
+                                            userJobTitle={user.jobTitle}
+                                            userComment={user.comment}
                                         />
-                                        <Typography
-                                            variant="body1"
-                                            textAlign="center"
-                                            color="text.primary"
-                                        >
-                                            {user.fullname}
-                                        </Typography>
-                                        <Typography
-                                            variant="body2"
-                                            textAlign="center"
-                                            color="text.primary"
-                                            sx={{mb: 2}}
-                                        >
-                                            {user.jobTitle}
-                                        </Typography>
-                                        <Card
-                                            sx={{
-                                                backgroundColor: "lightsalmon",
-                                                width: 1 / 2,
-                                                m: "0 auto",
-                                                borderRadius: 5,
-                                            }}
-                                        >
-                                            <CardContent>
-                                                <Typography
-                                                    variant="body2"
-                                                    textAlign="center"
-                                                    color={"text.primary"}
-                                                >
-                                                    {user.comment}
-                                                </Typography>
-                                            </CardContent>
-                                        </Card>
                                     </Box>
                                 ))}
                             </Slider>

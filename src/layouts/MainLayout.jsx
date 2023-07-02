@@ -1,7 +1,7 @@
 import {ThemeProvider} from "@mui/material/styles";
 import rtlPlugin from "stylis-plugin-rtl";
 import {CacheProvider} from "@emotion/react";
-import {HelmetProvider, Helmet} from "react-helmet-async";
+import {HelmetProvider} from "react-helmet-async";
 import createCache from "@emotion/cache";
 import {prefixer} from "stylis";
 

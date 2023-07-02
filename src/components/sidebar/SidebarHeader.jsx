@@ -1,12 +1,11 @@
 import {useState} from "react"
-import {Avatar, Box, Typography, IconButton} from "@mui/material";
-import {GitHub, Telegram, Instagram} from "@mui/icons-material"
-import {RandomReveal} from "react-random-reveal";
+import {Typography} from "@mui/material";
 
+import {RandomReveal} from "react-random-reveal";
 import avatar from "../../assets/logo.svg"
-import {alphabetPersian} from "../../constants/alphabetPersian"
-import {socialMediaInfo} from "../../constants/socialMediaInfo"
 import ThemeActionButton from "../ThemeActionButton";
+import {CustomAvatar} from "../common"
+import SocialMediaSection from "../SocialMediaSection";
 
 
 const SidebarHeader = () => {
@@ -15,33 +14,11 @@ const SidebarHeader = () => {
     return (
         <>
             <ThemeActionButton/>
-            <Avatar
-                src={avatar}
-                variant="rounded"
-                sx={{
-                    height: 150,
-                    width: 150,
-                    margin: "0 auto",
-                    display: {
-                        xl: "block",
-                        lg: "block",
-                        md: "block",
-                        sm: "none",
-                        xs: "none",
-                    },
-                }}
-            >
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        height: 150,
-                        justifyContent: "center"
-                    }}
-                >
-                    SB
-                </Box>
-            </Avatar>
+            <CustomAvatar
+                avatar={avatar}
+                size={150}
+                fallback={"SB"}
+            />
             <Typography
                 variant="h6"
                 color="text.primary"
@@ -66,43 +43,7 @@ const SidebarHeader = () => {
                     </Typography>
                 )
             }
-
-            <Box
-                compoenent={"div"}
-                sx={{
-                    mt: 2,
-                    m: "0 auto",
-                    display: "flex",
-                    justifyContent: "space-around",
-                    alignItems: "center",
-                    textAlign: "center"
-                }}
-            >
-                {
-                    socialMediaInfo.map(social => (
-                        <IconButton aria-label={social["aria-label"]}>
-                            <a href={social.link} target={"_blank"} rel={"noopener noreferrer"}>
-                                {social.icon}
-                            </a>
-                        </IconButton>
-                    ))
-                }
-                {/*<IconButton aria-label={"GitHub"}>*/}
-                {/*    <a href={"https://github.com/sjdnye"} target={"_blank"} rel={"noopener noreferrer"}>*/}
-                {/*        <GitHub sx={{color: "gray"}}/>*/}
-                {/*    </a>*/}
-                {/*</IconButton>*/}
-                {/*<IconButton aria-label={"Instagram"}>*/}
-                {/*    <a href={"https://instagram.com/_sjdnye_"} target={"_blank"} rel={"noopener noreferrer"}>*/}
-                {/*        <Instagram sx={{color: "gray"}}/>*/}
-                {/*    </a>*/}
-                {/*</IconButton>*/}
-                {/*<IconButton aria-label={"Telegram"}>*/}
-                {/*    <a href={"https://telegram.com/sjdnye"} target={"_blank"} rel={"noopener noreferrer"}>*/}
-                {/*        <Telegram sx={{color: "gray"}}/>*/}
-                {/*    </a>*/}
-                {/*</IconButton>*/}
-            </Box>
+            <SocialMediaSection/>
         </>
     );
 };

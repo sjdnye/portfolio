@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-import {Box, Typography, useMediaQuery} from "@mui/material";
+import {useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles"
 import SwipeableViews from "react-swipeable-views";
 
@@ -8,7 +8,7 @@ import SwipeableViews from "react-swipeable-views";
 import MainLayout from "../layouts/MainLayout";
 import {Sidebar} from "../components/sidebar";
 import PagesContainer from "./PagesContainer";
-import Page from "../pages/components/Page";
+import {Page} from "../components/pages";
 import SidebarContainer from "./SidebarContainer";
 import MainContext from "../context";
 import {DrawerActionButton} from "../components/drawer";
@@ -25,7 +25,6 @@ function App() {
 
     useEffect(() => {
         setMode(preferesDarkMode ? "dark" : "light");
-
     }, [])
 
 
