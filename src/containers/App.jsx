@@ -12,7 +12,7 @@ import Page from "../pages/components/Page";
 import SidebarContainer from "./SidebarContainer";
 import MainContext from "../context";
 import {DrawerActionButton} from "../components/drawer";
-import {Home, About, Resume, MyProjects, Comment} from "../pages";
+import {Home, About, Resume, MyProjects, Comment, Contact} from "../pages";
 
 function App() {
     const [pageNumber, setPageNumber] = useState(0);
@@ -75,9 +75,7 @@ function App() {
                             <Comment helmetTitle={"صفحه نظرات"}/>
                         </Page>
                         <Page pageNumber={pageNumber} index={5}>
-                            <Typography variant="h5" sx={{textAlign: "center"}}>
-                                ارتباط با من
-                            </Typography>
+                            <Contact helmetTitle={"ارتباط با من"}/>
                         </Page>
                     </SwipeableViews>
                 </PagesContainer>
